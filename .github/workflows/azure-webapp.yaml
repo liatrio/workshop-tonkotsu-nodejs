@@ -1,0 +1,26 @@
+name: Azure Staging Deployment
+
+on: 
+  pull_request:
+    branches-ignore: master
+
+jobs:
+  staging:
+    runs-on: ubuntu-latest
+    steps:
+
+      # from main
+    - uses: actions/checkout@v2
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: npm install
+    - run: npm test
+
+      # add for deployment
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+      uses: azure/webapps-deploy@v2
+      with: 
+        app-name: tonkotsu-liatrio-staging 
+        publish-profile: ${{ secrets.AZURE_STAGING_SECRETS }}
