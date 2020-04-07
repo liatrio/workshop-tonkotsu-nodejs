@@ -15,16 +15,10 @@ jobs:
         node-version: 12.x
     - run: npm install
     - run: npm test
-    - name: Generate deployment package
-      run: zip deploy.zip *.js *.json *.html *.css
-    - name: Deploy to EB
-      uses: einaregilsson/beanstalk-deploy@v9
+    - uses: hmanzur/actions-aws-eb@v1
       with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: workshop-tonkotsu-nodejs
-        environment_name: staging
-        version_label: ${{ github.sha}}
-        region: us-west-2
-        deployment_package: deploy.zip
-
+        command: 'deploy staging'
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: "us-west-2"
