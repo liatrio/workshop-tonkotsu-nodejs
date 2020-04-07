@@ -15,7 +15,7 @@ jobs:
         node-version: 12.x
     - run: npm install
     - run: npm test
-    - uses: hmanzur/actions-aws-eb@v1
+    - uses: hmanzur/actions-aws-eb@v1.0.0
       with:
         command: 'deploy staging'
       env:
