@@ -21,5 +21,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with: 
         app-name: tonktsu-liatrio-staging
-        slot-name: tonkotsu-liatrio-staging
+        slot-name: tonkotsu-liatrio-staging-staging
         publish-profile: ${{ secrets.AZURE_STAGING_SECRETS }}
