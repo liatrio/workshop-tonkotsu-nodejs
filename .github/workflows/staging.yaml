@@ -23,9 +23,9 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: "us-west-2"
     - uses: chrnorm/deployment-action@releases/v1
-       name: Create GitHub deployment
-       id: deployment
-       with:
-         token: "${{ github.token }}"
-         target_url: http://staging.eba-82bp63q3.us-west-2.elasticbeanstalk.com/
-         environment: staging
+      name: Create GitHub deployment
+      id: deployment
+      with:
+        token: "${{ github.token }}"
+        target_url: http://staging.eba-82bp63q3.us-west-2.elasticbeanstalk.com/
+        environment: staging
